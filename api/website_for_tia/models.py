@@ -19,6 +19,7 @@ class ArtTypeChoices(models.TextChoices):
 # Models Begin Here ------------
 class User(models.Model):
     id = models.AutoField(primary_key=True)
+    # TODO:  add email
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
 
