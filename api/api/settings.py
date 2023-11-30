@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'website_for_tia',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
