@@ -1,5 +1,9 @@
 import React from "react";
 
+// Notes:
+// Could optionally add this to outer div
+// <div className= "sticky top-0 z-50">
+
 const Navigation = () => {
   return (
     <div>
