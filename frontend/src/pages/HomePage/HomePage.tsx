@@ -12,7 +12,7 @@ import * as S from "./HomePage.styles";
 // - move each type of art fetching to it's own fetch to dry code
 // - add back display art and store art to homepage as preview
 
-function HomePage() {
+function HomePage(): React.ReactElement {
   // const [displayArtData, setDisplayArtData] = React.useState([]);
   const [storeArtData, setStoreArtData] = React.useState([]);
   const [userArtData, setUserArtData] = React.useState([]);
