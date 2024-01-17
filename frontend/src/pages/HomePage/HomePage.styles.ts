@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// TODO: totally create my own button component or find one I like to use
 export const ArtGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,9 +7,12 @@ export const ArtGrid = styled.div`
   margin-left: 1.25rem;
 `;
 
-export const ArtSection = styled.div`
-  height: 100vh;
-  padding-top: 4rem;
+export const ArtSectionContainer = styled.div`
+  background-color: #f0f8ff;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 2.5rem 1.25rem;
+  margin: 1.25rem;
 `;
 
 export const ArtSectionHeader = styled.div`
@@ -21,6 +23,8 @@ export const ArtSectionHeader = styled.div`
 export const ArtSectionSubtitle = styled.p`
   font-size: 1rem;
   color: gray;
+  max-width: 44rem;
+  word-wrap: break-word;
 `;
 
 export const ArtSectionTitle = styled.h1`
@@ -29,8 +33,6 @@ export const ArtSectionTitle = styled.h1`
 `;
 
 export const Container = styled.div`
-  height: 100vh;
-  background-color: #f0f8ff;
   margin: 0;
   padding: 0;
 `;
@@ -42,24 +44,8 @@ export const Description = styled.p`
 export const Header = styled.div`
   width: 50%;
   margin: auto;
-  margin-top: 2.5rem;
   margin-bottom: 0.75rem;
-`;
-
-export const PageLinkButton = styled.button`
-  background-color: teal;
-  color: white;
-  padding: 0.625rem 1.25rem; // 10px 20px
-  border-radius: 1.25rem; // 20px
-  border: none;
-  font-size: medium;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 4rem; // 64px
-
-  &:hover {
-    background-color: darkcyan;
-  }
+  padding-top: 2.5rem;
 `;
 
 export const PageSubtitle = styled.p`

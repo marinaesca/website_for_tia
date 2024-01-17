@@ -1,28 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import * as S from "./Navigation.styles";
 
 // Notes:
-// Could optionally add this to outer div
-// <div className= "sticky top-0 z-50">
+// Could optionally add sticky option to outer div to make it follow when scrolling
 
-const Navigation = () => {
+function Navigation(): React.ReactElement {
   return (
-    <div>
-      <ul className="flex bg-teal-400 cursor-pointer">
-        <li className="mx-3 my-4 text-2xl text-slate-900 hover:text-slate-700 transition">
+    <nav>
+      <S.Nav>
+        <S.NavItem as={Link} to="/">
           | Tia bo bia pia |
-        </li>
-        <li className="mx-3 my-5 text-slate-900 hover:text-slate-700 transition">
+        </S.NavItem>
+        <S.NavItem as={Link} to="/gallery">
           Display Art
-        </li>
-        <li className="mx-3 my-5 text-slate-900 hover:text-slate-700 transition">
-          Store Art
-        </li>
-        <li className="mx-3 my-5 text-slate-900 hover:text-slate-700 transition">
-          User Art
-        </li>
-      </ul>
-    </div>
+        </S.NavItem>
+        <S.NavItem>Store Art</S.NavItem>
+        <S.NavItem>User Art</S.NavItem>
+      </S.Nav>
+    </nav>
   );
-};
+}
 
 export default Navigation;

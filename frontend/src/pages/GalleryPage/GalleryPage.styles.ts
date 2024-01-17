@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
-  padding-top: 4rem;
+  background-color: #f0f8ff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  margin: 2rem;
 `;
 
 export const Header = styled.div`
