@@ -76,7 +76,7 @@ export const ProfileSection = styled.div`
   padding: 2rem;
   border: none;
   border-radius: 0.5rem;
-  box-shadow: 6px 6px 3px 1px violet;
+  box-shadow: 6px 6px #22d3ee;
 `;
 
 export const ProfileTitle = styled.h5`

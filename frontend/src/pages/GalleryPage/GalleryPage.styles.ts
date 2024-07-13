@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-// add parameter to this
-export const Container = styled.div`
+export const Container = styled.div<{ $preview: boolean }>`
   background-color: #f0f8ff;
   border-radius: 1.25rem;
-  padding: 2rem;
-  margin: 2rem;
+  padding: ${({ $preview }) => ($preview ? "0" : "2rem")};
+  margin: ${({ $preview }) => ($preview ? "0" : "1.25rem")};
 `;
 
 export const Header = styled.div`

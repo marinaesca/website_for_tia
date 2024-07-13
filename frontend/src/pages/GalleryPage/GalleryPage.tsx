@@ -25,10 +25,12 @@ function GalleryPage({
     getData();
   }, []);
 
+  console.log("preview value === ", preview);
+
   return (
     <>
       {!preview && <Navigation />}
-      <S.Container>
+      <S.Container $preview={preview}>
         <S.Header>
           <S.Title> The Gallery ~ </S.Title>
           <S.Description>
