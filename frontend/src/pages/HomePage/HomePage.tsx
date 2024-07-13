@@ -41,7 +41,7 @@ function HomePage(): React.ReactElement {
       <Navigation />
       <S.Container>
         <S.Header>
-          <S.PageTitle> Test Tester </S.PageTitle>
+          {/* <S.PageTitle> Test Tester </S.PageTitle> */}
           <S.PageSubtitle>Art Maker Extraordinaire</S.PageSubtitle>
         </S.Header>
 

@@ -72,10 +72,11 @@ export const ProfileSection = styled.div`
   justify-content: space-between;
   width: 50%;
   margin: auto;
-  padding: 3rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
   border: none;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 6px 6px 3px 1px violet;
 `;
 
 export const ProfileTitle = styled.h5`
