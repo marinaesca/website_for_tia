@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { ArtType, DisplayArtItem, StoreArtItem } from "../../types";
 import addDisplayArtItem from "../../api/addDisplayArtItem";
@@ -9,7 +9,7 @@ function AdminAddArtItem(): React.ReactElement {
   const [status, setStatus] = useState<string>("");
 
   const [itemType, setItemType] = useState<"DisplayArtItem" | "StoreArtItem">(
-    "StoreArtItem",
+    "DisplayArtItem",
   );
 
   const [displayArtItem, setDisplayArtItem] = useState<DisplayArtItem>({
@@ -33,16 +33,18 @@ function AdminAddArtItem(): React.ReactElement {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
+    const { name, value } = e.target;
+
     if (itemType === "DisplayArtItem") {
-      setDisplayArtItem({
-        ...displayArtItem,
-        [e.target.name]: e.target.value,
-      });
+      setDisplayArtItem((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     } else if (itemType === "StoreArtItem") {
-      setStoreArtItem({
-        ...storeArtItem,
-        [e.target.name]: e.target.value,
-      });
+      setStoreArtItem((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     }
   };
 
@@ -59,6 +61,30 @@ function AdminAddArtItem(): React.ReactElement {
       // TODO: submit store art item case
     }
   };
+
+  useEffect(() => {
+    // Reset form fields when itemType changes
+    if (itemType === "DisplayArtItem") {
+      setDisplayArtItem({
+        id: 0,
+        artType: ArtType.CEMENT,
+        title: "",
+        description: "",
+        image: "",
+      });
+    } else if (itemType === "StoreArtItem") {
+      setStoreArtItem({
+        id: 0,
+        artType: ArtType.CEMENT,
+        title: "",
+        description: "",
+        image: "",
+        price: 0,
+        quantity: 0,
+        weightLbs: 0,
+      });
+    }
+  }, [itemType]);
 
   async function handleAddDisplayArtItem() {
     try {
@@ -77,8 +103,8 @@ function AdminAddArtItem(): React.ReactElement {
       <S.LabelText>
         Art Item Type:
         <S.Select value={itemType} onChange={handleTypeChange}>
-          <option value="display">Display Art Item</option>
-          <option value="store">Store Art Item</option>
+          <option value="DisplayArtItem">Display Art Item</option>
+          <option value="StoreArtItem">Store Art Item</option>
         </S.Select>
       </S.LabelText>
 
@@ -88,8 +114,8 @@ function AdminAddArtItem(): React.ReactElement {
           name="artType"
           value={
             itemType === "DisplayArtItem"
-              ? displayArtItem.title
-              : storeArtItem.title
+              ? displayArtItem.artType
+              : storeArtItem.artType
           }
           onChange={handleChange}
         >

@@ -14,15 +14,10 @@ import * as S from "./HomePage.styles";
 // - styles: remove all tailwind and convert to styled
 
 function HomePage(): React.ReactElement {
-  // const [displayArtData, setDisplayArtData] = React.useState([]);
   const [storeArtData, setStoreArtData] = React.useState([]);
   const [userArtData, setUserArtData] = React.useState([]);
 
   const getData = async () => {
-    // const displayArtResponse = await fetch("/display_art_items");
-    // const displayArtData = await displayArtResponse.json();
-    // setDisplayArtData(displayArtData);
-
     const storeArtResponse = await fetch("/store_art_items");
     const storeArtData = await storeArtResponse.json();
     setStoreArtData(storeArtData);
@@ -41,7 +36,6 @@ function HomePage(): React.ReactElement {
       <Navigation />
       <S.Container>
         <S.Header>
-          {/* <S.PageTitle> Test Tester </S.PageTitle> */}
           <S.PageSubtitle>Art Maker Extraordinaire</S.PageSubtitle>
         </S.Header>
 
@@ -58,7 +52,6 @@ function HomePage(): React.ReactElement {
 
         {/* DISPLAY ART SECTION*/}
         <S.ArtSectionContainer>
-          {/* TODO: change this into a preview component */}
           <GalleryPage preview={true} />
           <TealButton as={Link} to="/gallery">
             Go to Gallery Page

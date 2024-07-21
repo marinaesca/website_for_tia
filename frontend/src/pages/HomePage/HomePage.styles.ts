@@ -63,7 +63,7 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
   width: 12rem;
   height: 12rem;
-  margin: 1rem 3rem;
+  margin-right: 3rem;
 `;
 
 export const ProfileSection = styled.div`

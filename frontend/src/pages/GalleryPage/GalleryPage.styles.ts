@@ -27,6 +27,5 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+  margin: 2rem 1.25rem;
 `;
