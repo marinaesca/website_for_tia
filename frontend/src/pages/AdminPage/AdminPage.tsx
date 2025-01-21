@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navigation from "../../components/Navigation/Navigation";
 import Title from "../../components/Title/Title";
-import AdminAddArtItem from "../AdminAddArtItem/AdminAddArtItem";
+import AdminAddArtItem from "../../components/AdminAddArtItem/AdminAddArtItem";
 import * as S from "./AdminPage.styles";
 
 // export interface GalleryDisplayArtItem {
