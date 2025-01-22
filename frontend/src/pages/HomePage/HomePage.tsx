@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../../components/Navigation/Navigation";
 import BasicCard from "../../components/BasicCard/BasicCard";
+import TealButton from "../../components/TealButton/TealButton";
 import GalleryPage from "../GalleryPage/GalleryPage";
 import StoreItemsPage from "../StoreItemsPage/StoreItemsPage";
-import TealButton from "../../components/TealButton/TealButton";
 import * as S from "./HomePage.styles";
 
 // TODO:
@@ -15,14 +15,9 @@ import * as S from "./HomePage.styles";
 // - styles: remove all tailwind and convert to styled
 
 function HomePage(): React.ReactElement {
-  // const [storeArtData, setStoreArtData] = React.useState([]);
   const [userArtData, setUserArtData] = React.useState([]);
 
   const getData = async () => {
-    // const storeArtResponse = await fetch("/store_art_items");
-    // const storeArtData = await storeArtResponse.json();
-    // setStoreArtData(storeArtData);
-
     const userArtResponse = await fetch("/user_art_items");
     const userArtData = await userArtResponse.json();
     setUserArtData(userArtData);
@@ -63,28 +58,6 @@ function HomePage(): React.ReactElement {
             Go to Store Page
           </TealButton>
         </S.ArtSectionContainer>
-        {/* STORE ART SECTION */}
-        {/* <S.ArtSectionContainer>
-          <S.ArtSectionHeader>
-            <S.ArtSectionTitle>Store Art</S.ArtSectionTitle>
-            <S.ArtSectionSubtitle>
-              This is theoretically art that is for sale. It maybe should just
-              be in the store section, but that doesn't exist yet so it's here.
-              This is cool cement art that comes in variations of grey, white,
-              and terrazo.
-            </S.ArtSectionSubtitle>
-          </S.ArtSectionHeader>
-          <S.ArtGrid>
-            {storeArtData.map((artItem: any) => (
-              <BasicCard
-                key={artItem.id}
-                title={artItem.title}
-                description={artItem.description}
-                image={artItem.image}
-              />
-            ))}
-          </S.ArtGrid>
-        </S.ArtSectionContainer> */}
         {/* USER ART SECTION*/}
         <S.ArtSectionContainer>
           <S.ArtSectionHeader>

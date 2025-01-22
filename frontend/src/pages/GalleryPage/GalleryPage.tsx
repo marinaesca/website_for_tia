@@ -25,6 +25,7 @@ function GalleryPage({
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("preview value === ", preview);

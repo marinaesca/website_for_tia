@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TealButton from "../../components/TealButton/TealButton";
+import TealButton from "../TealButton/TealButton";
 
 export const Form = styled.form`
   display: flex;
@@ -41,4 +41,5 @@ export const Select = styled.select`
 export const SubmitButton = styled(TealButton)`
   font-size: 1.25rem;
   font-weight: semi-bold;
+  margin: 4rem;
 `;

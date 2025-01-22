@@ -9,7 +9,7 @@ export const Button = styled.button`
   font-size: medium;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 4rem;
+  margin: 1.1rem;
 
   &:hover {
     background-color: darkcyan;
