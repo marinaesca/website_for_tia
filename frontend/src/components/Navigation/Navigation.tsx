@@ -15,7 +15,9 @@ function Navigation(): React.ReactElement {
         <S.NavItem as={Link} to="/gallery">
           Display Art
         </S.NavItem>
-        <S.NavItem>Store Art</S.NavItem>
+        <S.NavItem as={Link} to="/store_items">
+          Store Art
+        </S.NavItem>
         <S.NavItem>User Art</S.NavItem>
       </S.Nav>
     </nav>

@@ -1,16 +1,16 @@
 import React from "react";
+import * as S from "./BasicCard.styles";
 
 interface Props {
   title?: string;
   description: string;
   image: string;
+  preview?: boolean;
 }
 
-// TODO: address adding image correctly
-
-function BasicCard({ title, description, image }: Props) {
+function BasicCard({ title, description, image, preview = false }: Props) {
   return (
-    <div className="border rounded-md p-3 shadow">
+    <S.BasicCardContainer className="border rounded-md p-3 shadow">
       {title && (
         <h3 className="text-lg border-b-2 border-slate-300 text-slate-800">
           {" "}
@@ -18,10 +18,12 @@ function BasicCard({ title, description, image }: Props) {
         </h3>
       )}
       <h5 className="py-5">
-        <img alt="art" className="rounded-xs" src={image} />
+        <S.CardFormattedImage alt="art" className="rounded-xs" src={image} />
       </h5>
-      <p className="text-gray-500"> {description}</p>
-    </div>
+      <S.DescriptionText className="text-gray-500" preview={preview}>
+        {description}
+      </S.DescriptionText>
+    </S.BasicCardContainer>
   );
 }
 

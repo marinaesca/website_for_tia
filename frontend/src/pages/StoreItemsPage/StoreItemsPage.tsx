@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { GalleryDisplayArtItem } from "../../types";
+import { StoreArtItem } from "../../types";
 import BasicCard from "../../components/BasicCard/BasicCard";
 import Navigation from "../../components/Navigation/Navigation";
-import * as S from "./GalleryPage.styles";
+import * as S from "./StoreItemsPage.styles";
 
-interface GalleryPageProps {
+interface StoreItemsPageProps {
   preview?: boolean;
 }
 
-function GalleryPage({
+function StoreItemsPage({
   preview = false,
-}: GalleryPageProps): React.ReactElement {
-  const [displayArtData, setDisplayArtData] = useState([]);
+}: StoreItemsPageProps): React.ReactElement {
+  const [storeArtData, setStoreArtData] = useState([]);
 
   const getData = async () => {
-    const displayArtResponse = await fetch("/display_art_items");
-    const displayArtData = await displayArtResponse.json();
+    const storeArtResponse = await fetch("/store_art_items");
+    const storeArtData = await storeArtResponse.json();
     if (preview) {
-      setDisplayArtData(displayArtData.slice(0, 3));
+      setStoreArtData(storeArtData.slice(0, 3));
     } else {
-      setDisplayArtData(displayArtData);
+      setStoreArtData(storeArtData);
     }
   };
 
@@ -34,14 +34,14 @@ function GalleryPage({
       {!preview && <Navigation />}
       <S.Container $preview={preview}>
         <S.Header>
-          <S.Title> The Gallery ~ </S.Title>
+          <S.Title> Theoretically For Sale </S.Title>
           <S.Description>
-            Check out my wife's cool art she has created
+            Handmade by my wife! From her brain thoughts!{" "}
           </S.Description>
         </S.Header>
 
         <S.Grid>
-          {displayArtData.map((artItem: GalleryDisplayArtItem) => (
+          {storeArtData.map((artItem: StoreArtItem) => (
             <BasicCard
               key={artItem.id}
               title={artItem.title}
@@ -56,4 +56,4 @@ function GalleryPage({
   );
 }
 
-export default GalleryPage;
+export default StoreItemsPage;

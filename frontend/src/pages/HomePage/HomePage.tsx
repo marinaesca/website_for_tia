@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "../../components/Navigation/Navigation";
 import BasicCard from "../../components/BasicCard/BasicCard";
 import GalleryPage from "../GalleryPage/GalleryPage";
+import StoreItemsPage from "../StoreItemsPage/StoreItemsPage";
 import TealButton from "../../components/TealButton/TealButton";
 import * as S from "./HomePage.styles";
 
@@ -14,13 +15,13 @@ import * as S from "./HomePage.styles";
 // - styles: remove all tailwind and convert to styled
 
 function HomePage(): React.ReactElement {
-  const [storeArtData, setStoreArtData] = React.useState([]);
+  // const [storeArtData, setStoreArtData] = React.useState([]);
   const [userArtData, setUserArtData] = React.useState([]);
 
   const getData = async () => {
-    const storeArtResponse = await fetch("/store_art_items");
-    const storeArtData = await storeArtResponse.json();
-    setStoreArtData(storeArtData);
+    // const storeArtResponse = await fetch("/store_art_items");
+    // const storeArtData = await storeArtResponse.json();
+    // setStoreArtData(storeArtData);
 
     const userArtResponse = await fetch("/user_art_items");
     const userArtData = await userArtResponse.json();
@@ -38,7 +39,6 @@ function HomePage(): React.ReactElement {
         <S.Header>
           <S.PageSubtitle>Art Maker Extraordinaire</S.PageSubtitle>
         </S.Header>
-
         <S.ProfileSection>
           <S.ProfileImage alt="profile" src="./profile_picture.jpeg" />
           <div>
@@ -49,7 +49,6 @@ function HomePage(): React.ReactElement {
             </S.Description>
           </div>
         </S.ProfileSection>
-
         {/* DISPLAY ART SECTION*/}
         <S.ArtSectionContainer>
           <GalleryPage preview={true} />
@@ -57,9 +56,15 @@ function HomePage(): React.ReactElement {
             Go to Gallery Page
           </TealButton>
         </S.ArtSectionContainer>
-
         {/* STORE ART SECTION*/}
         <S.ArtSectionContainer>
+          <StoreItemsPage preview={true} />
+          <TealButton as={Link} to="/store_items">
+            Go to Store Page
+          </TealButton>
+        </S.ArtSectionContainer>
+        {/* STORE ART SECTION */}
+        {/* <S.ArtSectionContainer>
           <S.ArtSectionHeader>
             <S.ArtSectionTitle>Store Art</S.ArtSectionTitle>
             <S.ArtSectionSubtitle>
@@ -79,8 +84,7 @@ function HomePage(): React.ReactElement {
               />
             ))}
           </S.ArtGrid>
-        </S.ArtSectionContainer>
-
+        </S.ArtSectionContainer> */}
         {/* USER ART SECTION*/}
         <S.ArtSectionContainer>
           <S.ArtSectionHeader>
