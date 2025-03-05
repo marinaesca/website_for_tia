@@ -1,25 +1,9 @@
 import React, { useState } from "react";
 import Navigation from "../../components/Navigation/Navigation";
 import Title from "../../components/Title/Title";
-import AdminAddArtItem from "../../components/AdminAddArtItem/AdminAddArtItem";
+// import AdminAddArtItem from "../../components/AdminAddArtItem/AdminAddArtItem";
+import AdminAddModifyArtItem from "../../components/AdminAddModifyArtItem/AdminAddModifyArtItem";
 import * as S from "./AdminPage.styles";
-
-// export interface GalleryDisplayArtItem {
-//   id: number;
-//   title: string;
-//   description: string;
-//   image: string;
-// }
-// export interface StoreArtItem {
-//   id: number;
-//   artType: ArtType;
-//   title: string;
-//   description: string;
-//   image: string; // url
-//   price: number;
-//   quantity: number;
-//   weightLbs: number;
-// }
 
 function AdminPage(): React.ReactElement {
   const [view, setView] = useState<"add" | "modify">("add");
@@ -42,10 +26,10 @@ function AdminPage(): React.ReactElement {
         </S.SubNavigation>
         {view === "add" ? (
           <div>
-            <AdminAddArtItem />
+            <AdminAddModifyArtItem crudType="add" />
           </div>
         ) : (
-          <div>{/* Add your "modify" view content here */}</div>
+          <div>{<AdminAddModifyArtItem crudType="modify" />}</div>
         )}
       </S.Container>
     </>

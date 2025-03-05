@@ -3,9 +3,17 @@ import { useCookies } from "react-cookie";
 import { ArtType, DisplayArtItem, StoreArtItem } from "../../types";
 import addDisplayArtItem from "../../api/addDisplayArtItem";
 import addStoreArtItem from "../../api/addStoreArtItem";
-import * as S from "./AdminAddArtItem.styles";
+import modifyDisplayArtItem from "../../api/modifyDisplayArtItem";
+import modifyStoreArtItem from "../../api/modifyStoreArtItem";
+import * as S from "../AdminAddArtItem/AdminAddArtItem.styles";
 
-function AdminAddArtItem(): React.ReactElement {
+interface AdminAddModifyArtItemProps {
+  crudType: "add" | "modify";
+}
+
+function AdminAddModifyArtItem({
+  crudType = "add",
+}: AdminAddModifyArtItemProps): React.ReactElement {
   const [cookies] = useCookies(["authToken"]);
   const [postSubmitMessage, setPostSubmitMessage] = useState<string>("");
 
@@ -57,11 +65,50 @@ function AdminAddArtItem(): React.ReactElement {
     e.preventDefault();
 
     if (itemType === "DisplayArtItem") {
-      handleAddDisplayArtItem();
+      handleAddModifyDisplayArtItem();
     } else if (itemType === "StoreArtItem") {
-      handleAddStoreArtItem();
+      handleAddModifyStoreArtItem();
     }
   };
+
+  async function handleAddModifyDisplayArtItem() {
+    try {
+      let response: Response | null = null;
+
+      if (crudType === "add") {
+        response = await addDisplayArtItem(cookies.authToken, displayArtItem);
+      } else if (crudType === "modify") {
+        response = await modifyDisplayArtItem(
+          cookies.authToken,
+          displayArtItem,
+        );
+      }
+
+      setPostSubmitMessage(
+        response?.ok ? "Success!" : `Failed to ${crudType} display art item`,
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleAddModifyStoreArtItem() {
+    try {
+      let response: Response | null = null;
+
+      if (crudType === "add") {
+        response = await addStoreArtItem(cookies.authToken, storeArtItem);
+      } else if (crudType === "modify") {
+        response = await modifyStoreArtItem(cookies.authToken, storeArtItem);
+      }
+
+      setPostSubmitMessage(
+        response?.ok ? "Success!" : `Failed to ${crudType} store art item`,
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     // Reset form fields when itemType changes
@@ -86,31 +133,6 @@ function AdminAddArtItem(): React.ReactElement {
       });
     }
   }, [itemType]);
-
-  async function handleAddDisplayArtItem() {
-    try {
-      const response = await addDisplayArtItem(
-        cookies.authToken,
-        displayArtItem,
-      );
-      setPostSubmitMessage(
-        response.ok ? "Success!" : "Failed to add display art item",
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function handleAddStoreArtItem() {
-    try {
-      const response = await addStoreArtItem(cookies.authToken, storeArtItem);
-      setPostSubmitMessage(
-        response.ok ? "Success!" : "Failed to add store art item",
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -215,4 +237,4 @@ function AdminAddArtItem(): React.ReactElement {
   );
 }
 
-export default AdminAddArtItem;
+export default AdminAddModifyArtItem;
